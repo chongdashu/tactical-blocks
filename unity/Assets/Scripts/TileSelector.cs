@@ -12,6 +12,7 @@ public class TileSelector : MonoBehaviour {
 	public Ray cameraRay;
 
 	public Vector3 dir;
+	public Vector3 dir1;
 	public GameObject selectedTile = null;
 
 
@@ -59,11 +60,15 @@ public class TileSelector : MonoBehaviour {
 		{
 			currentlySelectedTile = floorHit.transform.gameObject;
 			dir = cameraRay.direction * cameraRayLength;
-			Vector3 pos = gameCamera.WorldToScreenPoint(gameCamera.transform.position);
-			Vector3 target = gameCamera.WorldToScreenPoint(pos + dir);
+			Vector3 pos = gameCamera.transform.position;
+			Vector3 target = pos + dir;
+			dir1 = currentlySelectedTile.transform.position - gameCamera.transform.position;
 
-//			Debug.DrawRay(pos, dir, Color.red);
-			Debug.DrawLine(pos, target, Color.red);
+			Debug.DrawRay(currentlySelectedTile.transform.position, -dir1, Color.green);
+			Debug.DrawRay(currentlySelectedTile.transform.position, Vector3.up*cameraRayLength, Color.yellow);
+//			Debug.DrawLine(currentlySelectedTile.transform.position, 
+//			               currentlySelectedTile.transform.position + Vector3.up*cameraRayLength, 
+//			               Color.magenta);
 
 			if (selectedTile != null)
 			{

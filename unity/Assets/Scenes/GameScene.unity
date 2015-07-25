@@ -576,8 +576,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9137f360e075d49e2b3a6270dbe6cca3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  floorMask: 0
+  cameraRayLength: 1000
   gameCamera: {fileID: 0}
   mousePosition: {x: 0, y: 0, z: 0}
+  mouseWorldPosition: {x: 0, y: 0, z: 0}
+  dir: {x: 0, y: 0, z: 0}
+  dir1: {x: 0, y: 0, z: 0}
+  selectedTile: {fileID: 0}
 --- !u!1 &1383485607
 GameObject:
   m_ObjectHideFlags: 0
