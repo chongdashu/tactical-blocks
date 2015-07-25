@@ -98,8 +98,8 @@ GameObject:
   - 33: {fileID: 285805407}
   - 65: {fileID: 285805406}
   - 23: {fileID: 285805405}
-  m_Layer: 0
-  m_Name: TileGreen2
+  m_Layer: 30
+  m_Name: Tile1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -160,6 +160,62 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 285805403}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &472884025
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 472884026}
+  m_Layer: 0
+  m_Name: _Lights
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &472884026
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 472884025}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -.50918895, y: 1.14051986, z: -.166498557}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1697377337}
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+--- !u!1 &680172847
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 680172848}
+  m_Layer: 0
+  m_Name: _Cameras
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &680172848
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 680172847}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -.50918895, y: 1.14051986, z: -.166498557}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1383485608}
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
 --- !u!1 &682374362
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,8 +227,8 @@ GameObject:
   - 33: {fileID: 682374366}
   - 65: {fileID: 682374365}
   - 23: {fileID: 682374364}
-  m_Layer: 0
-  m_Name: TileGreen (3)
+  m_Layer: 30
+  m_Name: TIle7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -244,8 +300,8 @@ GameObject:
   - 33: {fileID: 974157124}
   - 65: {fileID: 974157123}
   - 23: {fileID: 974157122}
-  m_Layer: 0
-  m_Name: TileGreen (2)
+  m_Layer: 30
+  m_Name: Tile5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -317,8 +373,8 @@ GameObject:
   - 33: {fileID: 1145531236}
   - 65: {fileID: 1145531235}
   - 23: {fileID: 1145531234}
-  m_Layer: 0
-  m_Name: TileGreen
+  m_Layer: 30
+  m_Name: Tile0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -448,11 +504,80 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1209822080}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: .5, z: 0}
+  m_LocalPosition: {x: .50918895, y: -.640519857, z: .166498557}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1312244926}
+  m_RootOrder: 0
+--- !u!1 &1312244925
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1312244926}
+  m_Layer: 0
+  m_Name: _Agents
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1312244926
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1312244925}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -.50918895, y: 1.14051986, z: -.166498557}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1209822084}
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+--- !u!1 &1337955700
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1337955701}
+  - 114: {fileID: 1337955702}
+  m_Layer: 0
+  m_Name: TileSelector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1337955701
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1337955700}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
+--- !u!114 &1337955702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1337955700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9137f360e075d49e2b3a6270dbe6cca3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameCamera: {fileID: 0}
+  mousePosition: {x: 0, y: 0, z: 0}
 --- !u!1 &1383485607
 GameObject:
   m_ObjectHideFlags: 0
@@ -475,12 +600,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1383485607}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 5.50918913, y: -2.14051986, z: -1.83350146}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1659157062}
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 680172848}
+  m_RootOrder: 0
 --- !u!1 &1400898882
 GameObject:
   m_ObjectHideFlags: 0
@@ -489,7 +614,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1400898883}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: _Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -515,7 +640,7 @@ Transform:
   - {fileID: 1827844326}
   - {fileID: 682374363}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!1 &1413707472
 GameObject:
   m_ObjectHideFlags: 0
@@ -527,8 +652,8 @@ GameObject:
   - 33: {fileID: 1413707476}
   - 65: {fileID: 1413707475}
   - 23: {fileID: 1413707474}
-  m_Layer: 0
-  m_Name: TileGreen2 (1)
+  m_Layer: 30
+  m_Name: Tile3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -729,10 +854,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1697377335}
   m_LocalRotation: {x: .258819073, y: 0, z: 0, w: .965925813}
-  m_LocalPosition: {x: -10, y: 10, z: 10}
+  m_LocalPosition: {x: -9.49081135, y: 8.8594799, z: 10.1664982}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 472884026}
   m_RootOrder: 0
 --- !u!1 &1827844325
 GameObject:
@@ -745,8 +870,8 @@ GameObject:
   - 33: {fileID: 1827844329}
   - 65: {fileID: 1827844328}
   - 23: {fileID: 1827844327}
-  m_Layer: 0
-  m_Name: TileGreen2 (3)
+  m_Layer: 30
+  m_Name: Tile6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -818,8 +943,8 @@ GameObject:
   - 33: {fileID: 1943246088}
   - 65: {fileID: 1943246087}
   - 23: {fileID: 1943246086}
-  m_Layer: 0
-  m_Name: TileGreen (1)
+  m_Layer: 30
+  m_Name: Tile2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -891,8 +1016,8 @@ GameObject:
   - 33: {fileID: 1976393325}
   - 65: {fileID: 1976393324}
   - 23: {fileID: 1976393323}
-  m_Layer: 0
-  m_Name: TileGreen2 (2)
+  m_Layer: 30
+  m_Name: Tile4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
