@@ -8,8 +8,10 @@ public class TileSelector : MonoBehaviour {
 
 	public Camera gameCamera;
 	public Vector3 mousePosition;
+	public Vector3 mouseWorldPosition;
 	public Ray cameraRay;
-	
+
+	public Vector3 dir;
 	public GameObject selectedTile = null;
 
 
@@ -23,12 +25,27 @@ public class TileSelector : MonoBehaviour {
 
 		floorMask = LayerMask.GetMask("TileGround");
 	}
+
+	void OnDrawGizmos()
+	{
+		if (selectedTile != null)
+		{
+			Gizmos.color = Color.magenta;
+//			Vector3 pos = gameCamera.transform.position - Vector3.up;
+//			Gizmos.DrawLine(pos, pos + dir);
+		}
+	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
+//		Vector3 forward = transform.TransformDirection(Vector3.forward) * 10;
+//		Debug.DrawRay(transform.position, forward, Color.red);
+
 		// Get mouse's screen position.
 		mousePosition = Input.mousePosition;
+//		mousePosition.z = gameCamera.nearClipPlane;
+		mouseWorldPosition = gameCamera.ScreenToWorldPoint(mousePosition);
 
 		// Get ray from screen point.
 		cameraRay = gameCamera.ScreenPointToRay(mousePosition); // world space
@@ -36,16 +53,17 @@ public class TileSelector : MonoBehaviour {
 		// Check if ray can hit the floor
 		RaycastHit floorHit;	
 
-
 		GameObject currentlySelectedTile = null;
 
 		if (Physics.Raycast(cameraRay, out floorHit, cameraRayLength, floorMask))
 		{
-
 			currentlySelectedTile = floorHit.transform.gameObject;
-			Vector3 dir = cameraRay.direction * cameraRayLength;
+			dir = cameraRay.direction * cameraRayLength;
+			Vector3 pos = gameCamera.WorldToScreenPoint(gameCamera.transform.position);
+			Vector3 target = gameCamera.WorldToScreenPoint(pos + dir);
 
-			Debug.DrawRay(gameCamera.transform.position + 5*cameraRay.direction, dir, Color.red);
+//			Debug.DrawRay(pos, dir, Color.red);
+			Debug.DrawLine(pos, target, Color.red);
 
 			if (selectedTile != null)
 			{
@@ -70,7 +88,6 @@ public class TileSelector : MonoBehaviour {
 		{
 			if (selectedTile != null)
 			{
-				print ("wop");
 				// Let's reset to old selected tile's position first.
 				Vector3 position = selectedTile.transform.position;
 				position.y = -0.5f;
