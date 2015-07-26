@@ -5,6 +5,7 @@ public class TileSelector : MonoBehaviour {
 
 	public int floorMask;
 	public float cameraRayLength = 1000f;
+	public LevelConstructor levelConstructor;
 
 	public Camera gameCamera;
 	public Vector3 mousePosition;
@@ -17,6 +18,8 @@ public class TileSelector : MonoBehaviour {
 	public Vector3 cameraDirection;
 	public GameObject selectedTile = null;
 
+	public System.Action<GameObject> OnTileSelectionCallback;
+
 
 	// Use this for initialization
 	void Start () 
@@ -24,6 +27,11 @@ public class TileSelector : MonoBehaviour {
 		if (gameCamera == null) 
 		{
 			gameCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
+		}
+
+		if (levelConstructor == null)
+		{
+			levelConstructor = GameObject.Find ("LevelConstructor").GetComponent<LevelConstructor>();
 		}
 
 		floorMask = LayerMask.GetMask("TileGround");
@@ -66,7 +74,7 @@ public class TileSelector : MonoBehaviour {
 		{
 			currentlySelectedTile = floorHit.transform.gameObject;
 			dir = cameraRay.direction * cameraRayLength;
-			Vector3 pos = gameCamera.transform.position;
+//			Vector3 pos = gameCamera.transform.position;
 //			Vector3 target = pos + dir;
 			dir1 = currentlySelectedTile.transform.position - gameCamera.transform.position;
 
@@ -82,16 +90,17 @@ public class TileSelector : MonoBehaviour {
 			{
 				if (!GameObject.Equals(currentlySelectedTile, selectedTile)) 
 				{
-					// Let's reset to old selected tile's position first.
+					// If the last selected tile is not the same tile as now,
+					// let's reset to old selected tile's position first.
 					Vector3 position = selectedTile.transform.position;
-					position.y = -0.5f;
+					position.y = -levelConstructor.levelTileHeight/2;
 					selectedTile.transform.position = position;
 				}
 			}
 
 			// Let's raise the selected tile now.
 			Vector3 newPosition = currentlySelectedTile.transform.position;
-			newPosition.y = -0.25f;
+			newPosition.y = 0;
 			currentlySelectedTile.transform.position = newPosition;
 
 			selectedTile = currentlySelectedTile;
@@ -103,11 +112,23 @@ public class TileSelector : MonoBehaviour {
 			{
 				// Let's reset to old selected tile's position first.
 				Vector3 position = selectedTile.transform.position;
-				position.y = -0.5f;
+				position.y = -levelConstructor.levelTileHeight/2;
 				selectedTile.transform.position = position;
 				selectedTile = null;
 			}
 
+		}
+
+		if (Input.GetMouseButtonUp(0))
+		{
+			Debug.Log ("OnMouseButtonUp()");
+			if (selectedTile != null)
+			{
+				if (OnTileSelectionCallback != null)
+				{
+					OnTileSelectionCallback(selectedTile);
+				}
+			}
 		}
 	
 
