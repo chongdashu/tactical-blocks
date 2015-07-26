@@ -8,7 +8,11 @@ public class MovableObject : MonoBehaviour {
 	Rigidbody movableRigidBody;
 	float speed = 5.0f;
 
+	public System.Action onMovementComplete;
+
 	public Vector3 targetPosition = Vector3.zero;
+	public float targetMagnitudeDelta;
+	public float snappingDelta = 0.1f;
 
 	void Awake () 
 	{
@@ -48,25 +52,39 @@ public class MovableObject : MonoBehaviour {
 		int x = int.Parse(tileName.Split ('_')[0]);
 		int z = int.Parse(tileName.Split ('_')[1]);
 
-		MoveTo (x, z);
+		Debug.Log ("Outer(), x=" + x + ", z=" + this.transform.position.z);
+		MoveTo (x, (int) this.transform.position.z, delegate() { 
+			Debug.Log ("Inner(), x=" + this.transform.position.x + ", z=" + z);
+			MoveTo ((int) this.transform.position.x, z);
+		});
 
 
 	}
 
-	public void MoveTo(int tileX, int tileZ)
+	public void MoveTo(int tileX, int tileZ, System.Action onComplete = null)
 	{
 		Debug.Log ("[MovableObject], MoveTo(tileX=" + tileX + ", tileZ=" + tileZ);
-
-
 		targetPosition.Set (tileX, transform.position.y, -Mathf.Abs(tileZ));
+		onMovementComplete = onComplete;
 
 	}
 
 	void FixedUpdate()
 	{
-		if (this.transform.position != this.targetPosition)
+		targetMagnitudeDelta = (this.transform.position-this.targetPosition).magnitude;
+		if ( targetMagnitudeDelta > snappingDelta)
 		{
+			targetMagnitudeDelta = 0f;
 			this.transform.position = Vector3.Lerp(this.transform.position, targetPosition, this.speed * Time.deltaTime); 
+		}
+		else 
+		{
+			this.transform.position = targetPosition;
+			if (onMovementComplete != null)
+			{
+				Debug.Log ("onMovementComplete != null");
+				onMovementComplete();
+			}
 		}
 	}
 	
