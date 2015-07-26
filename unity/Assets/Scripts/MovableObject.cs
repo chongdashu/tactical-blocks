@@ -56,6 +56,7 @@ public class MovableObject : MonoBehaviour {
 		MoveTo (x, (int) this.transform.position.z, delegate() { 
 			Debug.Log ("Inner(), x=" + this.transform.position.x + ", z=" + z);
 			MoveTo ((int) this.transform.position.x, z);
+
 		});
 
 

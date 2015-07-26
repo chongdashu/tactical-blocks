@@ -3,6 +3,8 @@ using System.Collections;
 
 public class LevelConstructor : MonoBehaviour {
 
+	public CameraMovement cameraMovement;
+
 	public GameObject[] tilePrefabArray;	
 	public GameObject groundContainer;
 	public int levelTileWidth = 7;
@@ -44,6 +46,18 @@ public class LevelConstructor : MonoBehaviour {
 				}
 			}
 		}
+
+		if (cameraMovement == null)
+		{
+			cameraMovement = GameObject.Find ("GameCamera").GetComponent<CameraMovement>();
+		}
+
+		if (cameraMovement != null)
+		{
+			cameraMovement.MoveTo(( (float) levelTileWidth)/2, -((float)levelTileLength)/2);
+		}
+
+
 	}
 
 	public float GetGroundY() 
