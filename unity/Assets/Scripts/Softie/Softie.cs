@@ -8,16 +8,20 @@ public class Softie : MonoBehaviour {
 	public float bearingsPerAxis = 4;
 	public float bearingDistance = 1.0f;
 	public int numberOfAxes = 1;
+	public GameObject[] axisContainers;
+	public Vector3 startingVelcocity = Vector3.zero;
 
 
-	// Use this for initialization
 	void Awake () 
 	{
+		core.GetComponent<Rigidbody>().velocity = startingVelcocity;
+		axisContainers = new GameObject[numberOfAxes];
 		for (int a=0; a < numberOfAxes; a++)
 		{
 			GameObject axisContainer = new GameObject();
 			axisContainer.transform.parent = this.transform;
 			axisContainer.name = "AxisContainer_" + a;
+			axisContainers[a] = axisContainer;
 
 			for (float i=0; i < bearingsPerAxis; i++)
 			{
@@ -40,8 +44,34 @@ public class Softie : MonoBehaviour {
 				bearingObject.transform.parent = axisContainer.transform;
 
 
+		
 			}
-			axisContainer.transform.Rotate(Vector3.up, a*180f/numberOfAxes);
+			axisContainer.transform.RotateAround(core.transform.position, Vector3.up, a*180f/numberOfAxes);
+			                                   
+		}
+
+
+		for (int i=0; i < axisContainers.Length; i++)
+		{
+			GameObject axisContainer = axisContainers[i];
+			for (int j=0; j < axisContainer.transform.childCount; j++)
+			{
+				GameObject bearingObject = axisContainer.transform.GetChild(j).gameObject;
+				SpringJoint joint = bearingObject.AddComponent<SpringJoint>();
+//				joint.autoConfigureConnectedAnchor = true;
+//				joint.axis = axisContainer.transform.rotation.eulerAngles;
+				joint.axis = Vector3.one;
+
+				joint.connectedBody = core.GetComponent<Rigidbody>();
+//
+				joint.enablePreprocessing = true;
+
+				joint.breakForce = Mathf.Infinity;
+				joint.breakTorque = Mathf.Infinity;
+
+				joint.anchor = Vector3.zero;
+				joint.connectedAnchor = Vector3.zero;
+			}
 		}
 
 

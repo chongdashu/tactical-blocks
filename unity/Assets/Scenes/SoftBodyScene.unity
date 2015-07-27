@@ -182,7 +182,7 @@ GameObject:
   - 33: {fileID: 416246513}
   - 135: {fileID: 416246512}
   - 23: {fileID: 416246511}
-  - 54: {fileID: 416246510}
+  - 54: {fileID: 416246509}
   m_Layer: 31
   m_Name: Core
   m_TagString: Untagged
@@ -202,7 +202,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1353358429}
   m_RootOrder: 0
---- !u!54 &416246510
+--- !u!54 &416246509
 Rigidbody:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -211,8 +211,8 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 1
-  m_AngularDrag: 5
-  m_UseGravity: 0
+  m_AngularDrag: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 56
@@ -375,7 +375,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1353358428}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 5, y: 10, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 416246508}
@@ -394,9 +394,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bearingPrefab: {fileID: 184826, guid: f58557fcbe93441fc9cf8ecbf849b7ae, type: 2}
   core: {fileID: 416246507}
-  bearingsPerAxis: 16
+  bearingsPerAxis: 8
   bearingDistance: 2
-  numberOfAxes: 4
+  numberOfAxes: 2
+  axisContainers: []
+  startingVelcocity: {x: 0, y: 0, z: 0}
 --- !u!1 &1489930415
 GameObject:
   m_ObjectHideFlags: 0
