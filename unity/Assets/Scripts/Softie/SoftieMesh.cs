@@ -92,9 +92,9 @@ public class SoftieMesh : MonoBehaviour {
 			for (int j=0; j < verticesPerEdge; j++)
 			{
 				int index = (verticesPerEdge-1) + j*verticesPerEdge;
-				Debug.Log ("b=" + b + ", i=" + i + ", j=" + index);
+//				Debug.Log ("b=" + b + ", i=" + i + ", j=" + index);
 				bearings[c++] = getBearingAt (i, index);
-				Debug.Log ("c, bearing=" + bearings[c-1]);
+//				Debug.Log ("c, bearing=" + bearings[c-1]);
 			}
 		}
 		AddChildSubmesh(CreatePlane(bearings, numberOfPlanes, verticesPerEdge, true));
@@ -102,14 +102,36 @@ public class SoftieMesh : MonoBehaviour {
 		// top
 		bearings = new GameObject[verticesPerEdge * planes.Length];
 		c = 0;
-		for (int i=0; i < planes.Length; i++)
+		for (int i=0; i < verticesPerEdge; i++)
 		{
-			for (int j=0; j < verticesPerEdge; j++)
+			for (int j=0; j < numberOfPlanes; j++)
 			{
-				int index = verticesPerEdge
-				bearings[c++] = getBearingAt (i, index);
+				int x = j;
+				int y = verticesPerEdge*(verticesPerEdge-1) + i;
+
+//				Debug.Log ("x=" + x + ", y=" + y);
+
+				bearings[c++] = getBearingAt (x,y);
 			}
 		}
+		AddChildSubmesh(CreatePlane(bearings, verticesPerEdge, numberOfPlanes, true));
+
+		// bottom
+		bearings = new GameObject[verticesPerEdge * planes.Length];
+		c = 0;
+		for (int i=0; i < verticesPerEdge; i++)
+		{
+			for (int j=0; j < numberOfPlanes; j++)
+			{
+				int x = j;
+				int y = verticesPerEdge-1 - i;
+				
+				Debug.Log ("x=" + x + ", y=" + y);
+				
+				bearings[c++] = getBearingAt (x,y);
+			}
+		}
+		AddChildSubmesh(CreatePlane(bearings, verticesPerEdge, numberOfPlanes, true));
 
 	}
 
@@ -142,8 +164,8 @@ public class SoftieMesh : MonoBehaviour {
 		GameObject container = new GameObject();
 
 		float distanceBetweenBearings = (cubeSoftie.cubeLength/ (cubeSoftie.bearingsPerAxis-1))/2;
-		float l = cubeSoftie.bearingsPerAxis;
-//		float l = length;
+//		float l = cubeSoftie.bearingsPerAxis;
+		int l = height;
 		for (int i=0; i < numberOfSubplanes; i++)
 		{
 
@@ -152,10 +174,10 @@ public class SoftieMesh : MonoBehaviour {
 			int v3Index = (int) (v1Index + l+1);
 			int v4Index = v3Index - 1;
 
-			Debug.Log ("v1Index=" + v1Index);
-			Debug.Log ("v2Index=" + v2Index);
-			Debug.Log ("v3Index=" + v3Index);
-			Debug.Log ("v4Index=" + v4Index);
+//			Debug.Log ("v1Index=" + v1Index);
+//			Debug.Log ("v2Index=" + v2Index);
+//			Debug.Log ("v3Index=" + v3Index);
+//			Debug.Log ("v4Index=" + v4Index);
 
 //			Debug.Log ("Creating Sub-Plane: " + i);
 //			Debug.Log ("|-v1Index: " + v1Index);
