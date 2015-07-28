@@ -31,7 +31,7 @@ public class CubeSoftie : MonoBehaviour {
 //					float angle = 2 * Mathf.PI * (i/bearingsPerAxis);
 					//				float angleDeg = Mathf.Rad2Deg *  (angle);
 					//			Debug.Log ("i=" + i + ", angleDeg= " + angleDeg);
-					t++;
+
 
 //					Debug.Log ("cubeLength=" + cubeLength);
 					float posX = Mathf.Lerp (-cubeLength/2, cubeLength/2, (j)/(bearingsPerAxis-1));
@@ -45,6 +45,7 @@ public class CubeSoftie : MonoBehaviour {
 					posY = core.transform.position.y + posY;
 					
 					GameObject bearingObject = Instantiate(bearingPrefab);
+					bearingObject.name = "bearing_" + t++;
 					Vector3 bearingPosition = new Vector3( posX, posY, corePos.z);
 					bearingObject.transform.position = bearingPosition;
 					bearingObject.transform.parent = axisContainer.transform;
