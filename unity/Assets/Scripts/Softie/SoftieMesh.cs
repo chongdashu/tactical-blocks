@@ -5,6 +5,7 @@ public class SoftieMesh : MonoBehaviour {
 
 	public CubeSoftie cubeSoftie;
 	public GameObject[] planes;
+	
 
 	// Use this for initialization
 	void Start () 
@@ -34,16 +35,37 @@ public class SoftieMesh : MonoBehaviour {
 
 		for (int i=0; i < planes.Length; i++)
 		{
-			Debug.Log ("Creating -Plane: " + i);
-			CreatePlane(planes[i]);
+			Debug.Log ("Creating Plane: " + i);
+			int l = (int) cubeSoftie.bearingsPerAxis;
+			GameObject[] bearings = new GameObject[l*l];
+			for (int j=0; j < planes[i].transform.childCount; j++)
+			{
+				bearings[j] = planes[i].transform.GetChild(j).gameObject;
+			}
+			GameObject submesh = CreatePlane(bearings);
+			submesh.name = "submesh_" + i;
+			submesh.transform.parent = this.transform;
 		}
+
+		// front
+		// -----
+		int verticesPerFace = cubeSoftie.bearingsPerAxis * cubeSoftie.bearingsPerAxis;
+
+		   
 
 	}
 
-	void CreatePlane(GameObject plane)
+	GameObject getBearingAt(int axisIndex, int bearingIndex)
 	{
-		int vertexObjects = plane.transform.childCount;
+		return planes[axisIndex].transform.GetChild (bearingIndex).gameObject;
+	}
+
+	GameObject CreatePlane(GameObject[] bearings)
+	{
 		int numberOfSubplanes = (int) ((cubeSoftie.bearingsPerAxis-1) * (cubeSoftie.bearingsPerAxis-1));
+
+		GameObject container = new GameObject();
+	
 
 
 		float distanceBetweenBearings = (cubeSoftie.cubeLength/ (cubeSoftie.bearingsPerAxis-1))/2;
@@ -59,26 +81,47 @@ public class SoftieMesh : MonoBehaviour {
 			Debug.Log ("Creating Sub-Plane: " + i);
 			Debug.Log ("|-v1Index: " + v1Index);
 
-			GameObject bearing1 = plane.transform.GetChild(v1Index).gameObject;
-			GameObject bearing2 = plane.transform.GetChild(v2Index).gameObject;
-			GameObject bearing3 = plane.transform.GetChild(v3Index).gameObject;
-			GameObject bearing4 = plane.transform.GetChild(v4Index).gameObject;
+			GameObject bearing1 = bearings[v1Index].gameObject;
+			GameObject bearing2 = bearings[v2Index].gameObject;
+			GameObject bearing3 = bearings[v3Index].gameObject;
+			GameObject bearing4 = bearings[v4Index].gameObject;
 
 //			GameObject p = GameObject.CreatePrimitive(PrimitiveType.Plane);
 			GameObject p = new GameObject("subplane_"+i);
  			
 			p.transform.position = (bearing1.transform.position + bearing2.transform.position + 
 			                        bearing3.transform.position + bearing4.transform.position) / 4;
+
+
+			Mesh m = new Mesh();
+			m.name = "softmesh_" + i;
+			m.vertices = new Vector3[]{
+				bearing1.transform.position - p.transform.position,
+				bearing2.transform.position - p.transform.position,
+				bearing3.transform.position - p.transform.position,
+				bearing4.transform.position - p.transform.position
+			};
+			m.triangles = new int[] {
+				2,1,0,
+				3,2,0
+			};
+			m.RecalculateNormals();
+
+			MeshFilter mf = p.AddComponent<MeshFilter>();
+			p.AddComponent<MeshRenderer>();
+			mf.mesh = m;
+
+			p.transform.parent = container.transform;
+	
+
 //			Vector3 scale = Vector3.one;
 //			scale *= distanceBetweenBearings;
 //			p.transform.localScale = scale;
 //			p.transform.Rotate(Vector3.right, -90);
 
-
-
-
-
 		}
+
+		return container;
 
 	}
 	
