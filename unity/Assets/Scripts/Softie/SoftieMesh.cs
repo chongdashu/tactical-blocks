@@ -157,12 +157,16 @@ public class SoftieMesh : MonoBehaviour {
 
 	GameObject CreatePlane(GameObject[] bearings, int width, int height, bool reversed=false)
 	{
+		int numberOfXSubplanes = (width-1);
+		int numberOfYSubplanes = (height-1);
 		int numberOfSubplanes = (width-1) * (height-1);
 //		int numberOfSubplanes = (bearings.Length / cubeSoftie.numberOfAxes)
 
 		Debug.Log ("numberOfSubplanes=" + numberOfSubplanes);
 
 		GameObject container = new GameObject();
+
+		Debug.Log ("bearings.Length=" + bearings.Length);
 
 		float distanceBetweenBearings = (cubeSoftie.cubeLength/ (cubeSoftie.bearingsPerAxis-1))/2;
 //		float l = cubeSoftie.bearingsPerAxis;
@@ -174,6 +178,18 @@ public class SoftieMesh : MonoBehaviour {
 			int v2Index = v1Index+1;
 			int v3Index = (int) (v1Index + l+1);
 			int v4Index = v3Index - 1;
+
+			Debug.Log ("i=" + i);
+
+//			Debug.Log ("v1-old=" + v1Index);
+//			Debug.Log ("v2-old=" + v2Index);
+//			Debug.Log ("v3-old=" + v3Index);
+//			Debug.Log ("v4-old=" + v4Index);
+
+//			v1Index = (i/(width-1))*(width-1) + i%(width-1);
+
+
+
 
 //			Debug.Log ("v1Index=" + v1Index);
 //			Debug.Log ("v2Index=" + v2Index);
@@ -231,13 +247,51 @@ public class SoftieMesh : MonoBehaviour {
 			uvs[2] = new Vector2(0, 1);
 			uvs[3] = new Vector2(1, 1);
 
-			float dx = 1.0f/(width-1);
-			float dy = 1.0f/(height-1);
+			Debug.Log ("i=" + i);
 
-			uvs[0] = new Vector2(i*dx, i*dy);
-			uvs[1] = new Vector2((i+1)*dx, i*dy);
-			uvs[2] = new Vector2(i*dx, (i+1)*dx);
-			uvs[3] = new Vector2((i+1)*dx, (i+1)*dy);
+			float ddx = i / numberOfYSubplanes;
+			float ddy = i % numberOfYSubplanes;
+
+			float ddx1 = (i+numberOfYSubplanes) / numberOfYSubplanes;
+			float ddy1 = ddy + 1f/numberOfYSubplanes;
+//			float ddx1 = ddx + (1f/numberOfXSubplanes);
+//			float ddy1 = ddy +  (1f/numberOfYSubplanes);
+
+			Debug.Log ("ddx=" + ddx);
+			Debug.Log ("ddy=" + ddy);
+
+			Debug.Log ("ddx1=" + ddx1);
+			Debug.Log ("ddy1=" + ddy1);
+
+			float dx = ddx/numberOfXSubplanes;
+			float dy = ddy/numberOfYSubplanes;
+			float dx1 = ddx1/numberOfXSubplanes;
+//			float dy1 = ddy1/numberOfYSubplanes;
+			float dy1 = dy + (1f/numberOfYSubplanes);
+
+			Debug.Log ("dx=" + dx);
+			Debug.Log ("dy=" + dy);
+			Debug.Log ("dx1=" + dx1);
+			Debug.Log ("dy1=" + dy1);
+
+
+			//   1 --- 2
+			//   |     |
+			//   |     |
+			//   0 --- 3
+
+
+			uvs[0] = new Vector2(dx, dy);
+			uvs[1] = new Vector2(dx, dy1);
+			uvs[2] = new Vector2(dx1, dy1);
+			uvs[3] = new Vector2(dx1, dy);
+
+			Debug.Log ("uvs[0]=" + uvs[0] );
+			Debug.Log ("uvs[1]=" + uvs[1] );
+			Debug.Log ("uvs[2]=" + uvs[2] );
+			Debug.Log ("uvs[3]=" + uvs[3] );
+
+
 
 
 			m.uv = uvs;
