@@ -6,6 +6,7 @@ public class Subplane : MonoBehaviour {
 	public GameObject[] bearings; 
 	public Rigidbody[] bearingBodies;
 	public MeshFilter meshFilter;
+	public Vector3[] newVertices;
 
 
 	// Use this for initialization
@@ -30,13 +31,19 @@ public class Subplane : MonoBehaviour {
 	{
 		if (bearings != null)
 		{
-			Vector3[] newVertices = new Vector3[bearingBodies.Length];
+			newVertices = new Vector3[bearingBodies.Length];
 			for (int i=0; i < bearingBodies.Length; i++)
 			{
 //				newVertices[i] = meshFilter.mesh.vertices[i];
 //				newVertices[i].z = bearingBodies[i].transform.position.;
 //				newVertices[i].z = meshFilter.mesh.vertices[i].z;
-				newVertices[i] = bearingBodies[i].transform.position - this.transform.position;
+				newVertices[i] = bearingBodies[i].transform.position - transform.position;
+				newVertices[i] = new Vector3(
+					Mathf.Round (newVertices[i].x * 100f) / 100f,
+					Mathf.Round (newVertices[i].y * 100f) / 100f,
+					Mathf.Round (newVertices[i].z * 100f) / 100f
+
+				);
 			}
 
 			meshFilter.mesh.vertices = newVertices;
