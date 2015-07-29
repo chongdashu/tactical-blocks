@@ -60,7 +60,7 @@ public class SoftieMesh : MonoBehaviour {
 		{
 			bearings[i] = getBearingAt (0, i);
 		}
-		AddChildSubmesh(CreatePlane(bearings, verticesPerEdge, verticesPerEdge));
+		AddChildSubmesh(CreatePlane(bearings, verticesPerEdge, verticesPerEdge), "front");
 
 		// back
 		// ----
@@ -69,7 +69,7 @@ public class SoftieMesh : MonoBehaviour {
 		{
 			bearings[i] = getBearingAt (planes.Length-1, i);
 		}
-		AddChildSubmesh(CreatePlane(bearings, verticesPerEdge, verticesPerEdge, true));
+		AddChildSubmesh(CreatePlane(bearings, verticesPerEdge, verticesPerEdge, true), "back");
 
 		// left
 		bearings = new GameObject[verticesPerEdge * planes.Length];
@@ -82,7 +82,7 @@ public class SoftieMesh : MonoBehaviour {
 				bearings[b++] = getBearingAt (i, j*verticesPerEdge);
 			}
 		}
-		AddChildSubmesh(CreatePlane(bearings, numberOfPlanes, verticesPerEdge, true));
+		AddChildSubmesh(CreatePlane(bearings, numberOfPlanes, verticesPerEdge, true), "left");
 
 		// right
 		bearings = new GameObject[verticesPerEdge * planes.Length];
@@ -97,7 +97,7 @@ public class SoftieMesh : MonoBehaviour {
 //				Debug.Log ("c, bearing=" + bearings[c-1]);
 			}
 		}
-		AddChildSubmesh(CreatePlane(bearings, numberOfPlanes, verticesPerEdge, true));
+		AddChildSubmesh(CreatePlane(bearings, numberOfPlanes, verticesPerEdge, true), "right");
 
 		// top
 		bearings = new GameObject[verticesPerEdge * planes.Length];
@@ -114,7 +114,7 @@ public class SoftieMesh : MonoBehaviour {
 				bearings[c++] = getBearingAt (x,y);
 			}
 		}
-		AddChildSubmesh(CreatePlane(bearings, verticesPerEdge, numberOfPlanes, true));
+		AddChildSubmesh(CreatePlane(bearings, verticesPerEdge, numberOfPlanes, true), "top");
 
 		// bottom
 		bearings = new GameObject[verticesPerEdge * planes.Length];
@@ -126,12 +126,12 @@ public class SoftieMesh : MonoBehaviour {
 				int x = j;
 				int y = verticesPerEdge-1 - i;
 				
-				Debug.Log ("x=" + x + ", y=" + y);
+//				Debug.Log ("x=" + x + ", y=" + y);
 				
 				bearings[c++] = getBearingAt (x,y);
 			}
 		}
-		AddChildSubmesh(CreatePlane(bearings, verticesPerEdge, numberOfPlanes, true));
+		AddChildSubmesh(CreatePlane(bearings, verticesPerEdge, numberOfPlanes, true), "bottom");
 
 	}
 
@@ -224,6 +224,14 @@ public class SoftieMesh : MonoBehaviour {
 			mf.mesh = m;
 
 			p.transform.parent = container.transform;
+
+			Subplane sp = p.AddComponent<Subplane>();
+			sp.setBearings(new GameObject[]{
+				bearing1,
+				bearing2,
+				bearing3,
+				bearing4
+			});
 	
 
 //			Vector3 scale = Vector3.one;

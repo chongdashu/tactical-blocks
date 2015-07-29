@@ -45,12 +45,33 @@ public class CubeSoftie : MonoBehaviour {
 					posY = core.transform.position.y + posY;
 					
 					GameObject bearingObject = Instantiate(bearingPrefab);
-					bearingObject.name = "bearing_" + t++;
+					bearingObject.name = "bearing_" + t;
 					Vector3 bearingPosition = new Vector3( posX, posY, corePos.z);
 					bearingObject.transform.position = bearingPosition;
 					bearingObject.transform.parent = axisContainer.transform;
+
+					if (j>=1)
+					{
+						SpringJoint joint = bearingObject.AddComponent<SpringJoint>();
+						//				joint.autoConfigureConnectedAnchor = true;
+						//				joint.axis = axisContainer.transform.rotation.eulerAngles;
+						joint.axis = Vector3.one;
+						
+						joint.connectedBody = axisContainer.transform.GetChild((int)(t)-1).gameObject.GetComponent<Rigidbody>();
+						//
+						joint.enablePreprocessing = true;
+						
+						joint.breakForce = Mathf.Infinity;
+						joint.breakTorque = Mathf.Infinity;
+						
+						joint.anchor = Vector3.zero;
+						joint.connectedAnchor = Vector3.zero;
+					}
+					t++;
 				}
-					
+
+
+				
 			}
 			float f = a/(numberOfAxes-1);
 			float posZ = Mathf.Lerp (-cubeLength/2, cubeLength/2, a/(numberOfAxes-1));
