@@ -6,6 +6,7 @@ public class SoftieMesh : MonoBehaviour {
 
 	public CubeSoftie cubeSoftie;
 	public GameObject[] planes;
+	public Material material;
 	
 
 	// Use this for initialization
@@ -217,11 +218,32 @@ public class SoftieMesh : MonoBehaviour {
 				};
 			}
 
+			//   2 --- 3
+			//   |     |
+			//   |     |
+			//   0 --- 1
+
+			Vector2[] uvs = new Vector2[4];
+		
+
+			uvs[0] = new Vector2(0, 0);
+			uvs[1] = new Vector2(1, 0);
+			uvs[2] = new Vector2(0, 1);
+			uvs[3] = new Vector2(1, 1);
+			m.uv = uvs;
+
+
+
+
 			m.RecalculateNormals();
+			m.RecalculateBounds();
 
 			MeshFilter mf = p.AddComponent<MeshFilter>();
-			p.AddComponent<MeshRenderer>();
 			mf.mesh = m;
+
+			MeshRenderer mr = p.AddComponent<MeshRenderer>();
+			mr.materials = new Material[]{material};
+
 
 			p.transform.parent = container.transform;
 

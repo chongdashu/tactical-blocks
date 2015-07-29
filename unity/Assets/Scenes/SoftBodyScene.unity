@@ -158,6 +158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cubeSoftie: {fileID: 1764535219}
   planes: []
+  material: {fileID: 2100000, guid: a0d867433bc884640a66573dec4bdb8f, type: 2}
 --- !u!1 &200295304
 GameObject:
   m_ObjectHideFlags: 0
@@ -585,7 +586,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11440692, guid: 9770bf7076aab4bbdab9487711a0b1c8, type: 2}
       propertyPath: cubeLength
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 451406, guid: 9770bf7076aab4bbdab9487711a0b1c8, type: 2}
       propertyPath: m_LocalPosition.x
@@ -875,7 +876,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1819795487}
   m_LocalRotation: {x: -.158600539, y: .0467249788, z: .114345804, w: -.979585469}
-  m_LocalPosition: {x: 11.8000002, y: 18.7000008, z: -48.7000008}
+  m_LocalPosition: {x: 11.8000002, y: 18, z: -50}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 733756881}
