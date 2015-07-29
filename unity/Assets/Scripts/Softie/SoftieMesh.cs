@@ -230,6 +230,16 @@ public class SoftieMesh : MonoBehaviour {
 			uvs[1] = new Vector2(1, 0);
 			uvs[2] = new Vector2(0, 1);
 			uvs[3] = new Vector2(1, 1);
+
+			float dx = 1.0f/(width-1);
+			float dy = 1.0f/(height-1);
+
+			uvs[0] = new Vector2(i*dx, i*dy);
+			uvs[1] = new Vector2((i+1)*dx, i*dy);
+			uvs[2] = new Vector2(i*dx, (i+1)*dx);
+			uvs[3] = new Vector2((i+1)*dx, (i+1)*dy);
+
+
 			m.uv = uvs;
 
 
