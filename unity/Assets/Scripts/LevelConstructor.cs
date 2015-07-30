@@ -68,7 +68,14 @@ public class LevelConstructor : MonoBehaviour {
 						float tileHeight = tile.GetComponent<MeshFilter>().mesh.bounds.size.y;
 						tile.transform.localPosition = new Vector3(x, -tileHeight/2+m, -z); 
 						tile.transform.parent = groundContainer.transform;
-						tile.name = "Tile_" + x + "_" + Mathf.Abs(z);
+						tile.name = "Tile_" + m + "_" + x + "_" + Mathf.Abs(z);
+
+						LevelTile levelTile = tile.GetComponent<LevelTile>();
+						levelTile.x = x;
+						levelTile.z = Mathf.Abs (z);
+						levelTile.y = m;
+
+
 					}
 				}
 			}
