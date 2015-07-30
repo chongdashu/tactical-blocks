@@ -128,13 +128,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraMovement: {fileID: 0}
   tilePrefabArray:
-  - {fileID: 108234, guid: 37bfa079e298741839bb8bfe29e575f6, type: 2}
-  - {fileID: 145754, guid: ff6f8fddae77b4bddbc27d4df83c09c8, type: 2}
+  - {fileID: 113830, guid: aa4cb1d6d58c241d88603b0ce9e9cf87, type: 2}
+  - {fileID: 157354, guid: cfe0885219d894aa6a89a44e3b7c9c7b, type: 2}
+  - {fileID: 113830, guid: aa4cb1d6d58c241d88603b0ce9e9cf87, type: 2}
+  - {fileID: 157354, guid: cfe0885219d894aa6a89a44e3b7c9c7b, type: 2}
+  prefabHeights: []
   groundContainer: {fileID: 0}
   levelTileWidth: 7
   levelTileLength: 5
   levelTileHeight: .5
   defaultMap: 12121212121212121212121212211212112
+  map: []
 --- !u!1 &243664905
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,7 +166,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 243664905}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: .5, z: 0}
+  m_LocalPosition: {x: 0, y: .5, z: .0299999993}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1312244926}

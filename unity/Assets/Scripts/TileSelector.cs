@@ -112,7 +112,7 @@ public class TileSelector : MonoBehaviour {
 			{
 				// Let's reset to old selected tile's position first.
 				Vector3 position = selectedTile.transform.position;
-				position.y = -levelConstructor.levelTileHeight/2;
+				position.y = -levelConstructor.prefabHeights[0]/2;
 				selectedTile.transform.position = position;
 				selectedTile = null;
 			}
