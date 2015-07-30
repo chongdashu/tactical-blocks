@@ -35,6 +35,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &179096
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 498788}
+  - 114: {fileID: 11413084}
+  m_Layer: 0
+  m_Name: Mesh
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &400248
 Transform:
   m_ObjectHideFlags: 1
@@ -42,9 +58,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 167768}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5, y: 10, z: 0}
+  m_LocalPosition: {x: 2, y: 10, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 498788}
   - {fileID: 451406}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -57,6 +74,18 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 400248}
+  m_RootOrder: 1
+--- !u!4 &498788
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179096}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 400248}
   m_RootOrder: 0
@@ -104,8 +133,22 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 56
+  m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &11413084
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28b40aaad6dbe4413a4222e902d80cc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cubeSoftie: {fileID: 11440692}
+  planes: []
+  material: {fileID: 2100000, guid: 89ce13f04b78f4ceeadc6324c4f9e298, type: 2}
 --- !u!114 &11440692
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -119,11 +162,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bearingPrefab: {fileID: 184826, guid: f58557fcbe93441fc9cf8ecbf849b7ae, type: 2}
   core: {fileID: 168422}
-  cubeLength: 3
-  bearingsPerAxis: 4
-  numberOfAxes: 4
+  cubeLength: 2
+  bearingsPerAxis: 3
+  numberOfAxes: 3
   axisContainers: []
   startingVelcocity: {x: 0, y: 0, z: 0}
+  totalMass: 1
+  springTension: 100
+  springDamper: .200000003
 --- !u!135 &13548938
 SphereCollider:
   m_ObjectHideFlags: 1

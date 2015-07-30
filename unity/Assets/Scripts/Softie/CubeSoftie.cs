@@ -12,6 +12,10 @@ public class CubeSoftie : MonoBehaviour {
 	public GameObject[] axisContainers;
 	public Vector3 startingVelcocity = Vector3.zero;
 
+	public float totalMass = 2.0f;
+	public float springTension = 10f;
+	public float springDamper = 0.2f;
+
 	void Awake () 
 	{
 		core.GetComponent<Rigidbody>().velocity = startingVelcocity;
@@ -50,6 +54,9 @@ public class CubeSoftie : MonoBehaviour {
 					bearingObject.transform.position = bearingPosition;
 					bearingObject.transform.parent = axisContainer.transform;
 
+					Rigidbody rigidBody = bearingObject.GetComponent<Rigidbody>();
+					rigidBody.mass = totalMass / (bearingsPerAxis * numberOfAxes);
+
 					if (j>=1)
 					{
 						SpringJoint joint = bearingObject.AddComponent<SpringJoint>();
@@ -60,6 +67,9 @@ public class CubeSoftie : MonoBehaviour {
 						joint.connectedBody = axisContainer.transform.GetChild((int)(t)-1).gameObject.GetComponent<Rigidbody>();
 						//
 						joint.enablePreprocessing = true;
+
+						joint.spring = springTension;
+						joint.damper = springDamper;
 						
 						joint.breakForce = Mathf.Infinity;
 						joint.breakTorque = Mathf.Infinity;
@@ -94,6 +104,9 @@ public class CubeSoftie : MonoBehaviour {
 				joint.connectedBody = core.GetComponent<Rigidbody>();
 				//
 				joint.enablePreprocessing = true;
+
+				joint.spring = springTension;
+				joint.damper = springDamper;
 				
 				joint.breakForce = Mathf.Infinity;
 				joint.breakTorque = Mathf.Infinity;
