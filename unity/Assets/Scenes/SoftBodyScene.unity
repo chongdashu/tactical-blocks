@@ -130,6 +130,14 @@ Prefab:
       propertyPath: m_Name
       value: CubeSoftie (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 11440692, guid: 9770bf7076aab4bbdab9487711a0b1c8, type: 2}
+      propertyPath: springTension
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11440692, guid: 9770bf7076aab4bbdab9487711a0b1c8, type: 2}
+      propertyPath: springDamper
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9770bf7076aab4bbdab9487711a0b1c8, type: 2}
   m_IsPrefabParent: 0
@@ -238,6 +246,10 @@ Prefab:
     - target: {fileID: 167768, guid: 9770bf7076aab4bbdab9487711a0b1c8, type: 2}
       propertyPath: m_Name
       value: CubeSoftie (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 11440692, guid: 9770bf7076aab4bbdab9487711a0b1c8, type: 2}
+      propertyPath: springTension
+      value: 500
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9770bf7076aab4bbdab9487711a0b1c8, type: 2}
