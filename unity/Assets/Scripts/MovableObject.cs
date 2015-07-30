@@ -48,9 +48,13 @@ public class MovableObject : MonoBehaviour {
 	void OnTileSelected(GameObject tileObject)
 	{
 		Debug.Log ("[MovableObjet] OnTileSelected()");
+		LevelTile levelTile = tileObject.GetComponent<LevelTile>();
+
 		string tileName = tileObject.name.Replace("Tile_","");
-		int x = int.Parse(tileName.Split ('_')[0]);
-		int z = int.Parse(tileName.Split ('_')[1]);
+//		int x = int.Parse(tileName.Split ('_')[0]);
+//		int z = int.Parse(tileName.Split ('_')[1]);
+		int x = levelTile.x;
+		int z = levelTile.z;
 
 		Debug.Log ("Outer(), x=" + x + ", z=" + this.transform.position.z);
 		MoveTo (x, (int) this.transform.position.z, delegate() { 

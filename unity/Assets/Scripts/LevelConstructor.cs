@@ -32,18 +32,18 @@ public class LevelConstructor : MonoBehaviour {
 		defaultMap = 
 			"1212121" +
 			"2121212" +
-			"1210021" +
+			"1212121" +
 			"2121212" +
 			"1212121";
 
 		map.Add(defaultMap);
-		map.Add (
-			"0000000" +
-		    "0000000" +
-		    "0000000" +
-		    "3434343" +
-			"4343434" 
-		);
+//		map.Add (
+//			"0000000" +
+//		    "0000000" +
+//		    "0000000" +
+//		    "3434343" +
+//			"4343434" 
+//		);
 
 
 		groundContainer = GameObject.Find("_Ground");
