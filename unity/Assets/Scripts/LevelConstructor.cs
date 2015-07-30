@@ -11,7 +11,7 @@ public class LevelConstructor : MonoBehaviour {
 	public GameObject groundContainer;
 	public int levelTileWidth = 7;
 	public int levelTileLength = 5;
-	public float levelTileHeight = 0f;
+	public float groundY = 0f;
 	public string defaultMap = "";
 	public List<string> map = new List<string>();
 
@@ -65,15 +65,17 @@ public class LevelConstructor : MonoBehaviour {
 					{
 						tileType -= 1; // account for empty tile at index 0;
 						GameObject tile = Instantiate(tilePrefabArray[tileType]);
-						float tileHeight = tile.GetComponent<MeshFilter>().mesh.bounds.size.y;
-						tile.transform.localPosition = new Vector3(x, -tileHeight/2+m, -z); 
-						tile.transform.parent = groundContainer.transform;
-						tile.name = "Tile_" + m + "_" + x + "_" + Mathf.Abs(z);
 
 						LevelTile levelTile = tile.GetComponent<LevelTile>();
 						levelTile.x = x;
 						levelTile.z = Mathf.Abs (z);
 						levelTile.y = m;
+
+						tile.transform.localPosition = new Vector3(x, m+levelTile.size.y/2, -z); 
+						tile.transform.parent = groundContainer.transform;
+						tile.name = "Tile_" + m + "_" + x + "_" + Mathf.Abs(z);
+
+
 
 
 					}
@@ -97,7 +99,7 @@ public class LevelConstructor : MonoBehaviour {
 
 	public float GetGroundY() 
 	{
-		return levelTileHeight;
+		return groundY;
 	}
 	
 	// Update is called once per frame

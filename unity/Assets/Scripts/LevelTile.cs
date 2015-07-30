@@ -10,7 +10,7 @@ public class LevelTile : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
-		size = this.GetComponent<MeshFilter>().mesh.bounds.size;
+		size = this.GetComponent<Collider>().bounds.size;
 	}
 	
 	// Update is called once per frame

@@ -93,14 +93,14 @@ public class TileSelector : MonoBehaviour {
 					// If the last selected tile is not the same tile as now,
 					// let's reset to old selected tile's position first.
 					Vector3 position = selectedTile.transform.position;
-					position.y = selectedTile.y - selectedTile.size.y/2;
+					position.y = selectedTile.y + selectedTile.size.y/2;
 					selectedTile.transform.position = position;
 				}
 			}
 
 			// Let's raise the selected tile now.
 			Vector3 newPosition = currentlySelectedTile.transform.position;
-			newPosition.y = currentlySelectedTile.y - currentlySelectedTile.size.y/2 + 0.25f;
+			newPosition.y = currentlySelectedTile.y + currentlySelectedTile.size.y/2 + 0.25f;
 			currentlySelectedTile.transform.position = newPosition;
 
 			selectedTile = currentlySelectedTile;
@@ -112,7 +112,7 @@ public class TileSelector : MonoBehaviour {
 			{
 				// Let's reset to old selected tile's position first.
 				Vector3 position = selectedTile.transform.position;
-				position.y = selectedTile.y - selectedTile.size.y/2;
+				position.y = selectedTile.y + selectedTile.size.y/2;
 				selectedTile.transform.position = position;
 				selectedTile = null;
 			}
