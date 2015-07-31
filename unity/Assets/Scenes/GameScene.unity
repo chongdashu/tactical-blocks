@@ -152,7 +152,7 @@ GameObject:
   - 23: {fileID: 243664907}
   - 54: {fileID: 243664910}
   - 114: {fileID: 243664911}
-  m_Layer: 0
+  m_Layer: 29
   m_Name: Agent1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

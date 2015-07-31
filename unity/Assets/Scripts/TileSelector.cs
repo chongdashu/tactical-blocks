@@ -17,6 +17,7 @@ public class TileSelector : MonoBehaviour {
 	public Vector3 cameraOrigin;
 	public Vector3 cameraDirection;
 	public LevelTile selectedTile = null;
+	public LevelTile lastClickedTile = null;
 
 	public System.Action<GameObject> OnTileSelectionCallback;
 
@@ -88,7 +89,7 @@ public class TileSelector : MonoBehaviour {
 
 			if (selectedTile != null)
 			{
-				if (!GameObject.Equals(currentlySelectedTile, selectedTile)) 
+				if (!GameObject.Equals(currentlySelectedTile, selectedTile) || GameObject.Equals (lastClickedTile, currentlySelectedTile)) 
 				{
 					// If the last selected tile is not the same tile as now,
 					// let's reset to old selected tile's position first.
@@ -96,14 +97,20 @@ public class TileSelector : MonoBehaviour {
 					position.y = selectedTile.y + selectedTile.size.y/2;
 					selectedTile.transform.position = position;
 				}
+
 			}
 
-			// Let's raise the selected tile now.
-			Vector3 newPosition = currentlySelectedTile.transform.position;
-			newPosition.y = currentlySelectedTile.y + currentlySelectedTile.size.y/2 + 0.25f;
-			currentlySelectedTile.transform.position = newPosition;
+			if (!GameObject.Equals (lastClickedTile, currentlySelectedTile))
+			{
+				// Let's raise the selected tile now.
+				Vector3 newPosition = currentlySelectedTile.transform.position;
+				newPosition.y = currentlySelectedTile.y + currentlySelectedTile.size.y/2 + 0.25f;
+				currentlySelectedTile.transform.position = newPosition;
+				
+				selectedTile = currentlySelectedTile;
+			}
 
-			selectedTile = currentlySelectedTile;
+
 
 		}
 		else
@@ -128,6 +135,8 @@ public class TileSelector : MonoBehaviour {
 				{
 					OnTileSelectionCallback(selectedTile.gameObject);
 				}
+
+				lastClickedTile = selectedTile;
 			}
 		}
 	
