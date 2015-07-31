@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MovableObject : MonoBehaviour {
+public class GridMovement : MonoBehaviour {
 
 	LevelConstructor levelConstructor;
 	TileSelector tileSelector;
