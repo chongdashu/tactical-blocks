@@ -49,6 +49,7 @@ public class FreeMovement : MonoBehaviour {
 		if (h != 0)
 		{
 			movementVector += Quaternion.AngleAxis(90*h, Vector3.up) * Camera.main.transform.forward;
+			movementVector.y = 0f;
 		}
 		normalizedMovementVector = movementVector.normalized * movementSpeed * Time.deltaTime;
 		rigidBody.MovePosition(transform.position + normalizedMovementVector);
