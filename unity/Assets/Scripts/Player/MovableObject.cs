@@ -40,8 +40,12 @@ public class MovableObject : MonoBehaviour {
 
 		if (tileSelector == null)
 		{
-			tileSelector = GameObject.Find ("TileSelector").GetComponent<TileSelector>();
-			tileSelector.OnTileSelectionCallback += OnTileSelected;
+			GameObject tileSelectorObj = GameObject.Find ("TileSelector");
+			if (tileSelectorObj != null) 
+			{
+				tileSelector = tileSelectorObj.GetComponent<TileSelector>();
+				tileSelector.OnTileSelectionCallback += OnTileSelected;
+			}
 		}
 	}
 
