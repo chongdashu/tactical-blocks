@@ -152,6 +152,7 @@ GameObject:
   - 23: {fileID: 243664907}
   - 54: {fileID: 243664910}
   - 114: {fileID: 243664911}
+  - 114: {fileID: 243664912}
   m_Layer: 29
   m_Name: Agent1
   m_TagString: Untagged
@@ -235,7 +236,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 243664905}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9e734308547284cf6bc29300b8bdf196, type: 3}
   m_Name: 
@@ -243,6 +244,22 @@ MonoBehaviour:
   targetPosition: {x: 0, y: 0, z: 0}
   targetMagnitudeDelta: 0
   snappingDelta: .100000001
+--- !u!114 &243664912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 243664905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3049de55386c044488d198a13741efc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed: 5
+  floorMask: 0
+  movementVector: {x: 0, y: 0, z: 0}
+  normalizedMovementVector: {x: 0, y: 0, z: 0}
+  rigidBody: {fileID: 0}
 --- !u!1 &305106554
 GameObject:
   m_ObjectHideFlags: 0
