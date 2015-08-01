@@ -939,6 +939,7 @@ MonoBehaviour:
   tempObj: {fileID: 0}
   tileInDirection: {fileID: 0}
   targetTile: {fileID: 0}
+  tileSnapSensitivity: .785000026
 --- !u!54 &1989157181
 Rigidbody:
   m_ObjectHideFlags: 0

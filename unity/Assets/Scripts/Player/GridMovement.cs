@@ -8,6 +8,7 @@ public class GridMovement : BaseMovement {
 
 	public GameObject tileInDirection;
 	public GameObject targetTile;
+	public float tileSnapSensitivity = 0.785f;
 
 	// Use this for initialization
 	override protected void Awake () 
@@ -42,15 +43,17 @@ public class GridMovement : BaseMovement {
 				// Nothing else in front.
 				if (targetTile != null)
 				{
-					if (Mathf.Approximately((targetTile.transform.position - transform.position).magnitude, 0.05f)) 
+					if ((targetTile.transform.position - transform.position).magnitude < tileSnapSensitivity) 
 					{
 						// we're almost at our target destination, stop.
 						rigidBody.MovePosition(targetTile.transform.position);
+						rigidBody.transform.position = new Vector3(targetTile.transform.position.x, transform.position.y, targetTile.transform.position.z);
 						targetTile = null;
 					}
 					else
 					{
-						tempVector3 = Vector3.Lerp (transform.position, targetTile.transform.position, movementSpeed*Time.deltaTime);
+						tempVector3 = (targetTile.transform.position - transform.position);
+						tempVector3 = Vector3.Lerp (transform.position, targetTile.transform.position, (movementSpeed*Time.deltaTime)/tempVector3.magnitude);
 						rigidBody.MovePosition(tempVector3);
 					}
 				}
@@ -61,18 +64,19 @@ public class GridMovement : BaseMovement {
 		{
 			if (targetTile != null)
 			{
-				if (Mathf.Approximately((targetTile.transform.position - transform.position).magnitude, 0.05f)) 
+				if ((targetTile.transform.position - transform.position).magnitude < tileSnapSensitivity) 
 				{
 					// we're almost at our target destination, stop.
 					rigidBody.MovePosition(targetTile.transform.position);
+					rigidBody.transform.position = new Vector3(targetTile.transform.position.x, transform.position.y, targetTile.transform.position.z);
 					targetTile = null;
 				}
 				else
 				{
-					tempVector3 = Vector3.Lerp (transform.position, targetTile.transform.position, movementSpeed*Time.deltaTime);
+					tempVector3 = (targetTile.transform.position - transform.position);
+					tempVector3 = Vector3.Lerp (transform.position, targetTile.transform.position, (movementSpeed*Time.deltaTime)/tempVector3.magnitude);
 					rigidBody.MovePosition(tempVector3);
 				}
-
 			}
 		}
 	}
