@@ -139,64 +139,6 @@ MonoBehaviour:
   groundY: 0
   defaultMap: 12121212121212121212121212211212112
   map: []
---- !u!1001 &117638290
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1312244926}
-    m_Modifications:
-    - target: {fileID: 400248, guid: 9770bf7076aab4bbdab9487711a0b1c8, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 400248, guid: 9770bf7076aab4bbdab9487711a0b1c8, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 400248, guid: 9770bf7076aab4bbdab9487711a0b1c8, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -3
-      objectReference: {fileID: 0}
-    - target: {fileID: 400248, guid: 9770bf7076aab4bbdab9487711a0b1c8, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400248, guid: 9770bf7076aab4bbdab9487711a0b1c8, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400248, guid: 9770bf7076aab4bbdab9487711a0b1c8, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400248, guid: 9770bf7076aab4bbdab9487711a0b1c8, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400248, guid: 9770bf7076aab4bbdab9487711a0b1c8, type: 2}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 11440692, guid: 9770bf7076aab4bbdab9487711a0b1c8, type: 2}
-      propertyPath: cubeLength
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5441920, guid: 9770bf7076aab4bbdab9487711a0b1c8, type: 2}
-      propertyPath: m_Constraints
-      value: 112
-      objectReference: {fileID: 0}
-    - target: {fileID: 5441920, guid: 9770bf7076aab4bbdab9487711a0b1c8, type: 2}
-      propertyPath: m_UseGravity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11440692, guid: 9770bf7076aab4bbdab9487711a0b1c8, type: 2}
-      propertyPath: springTension
-      value: 100
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 9770bf7076aab4bbdab9487711a0b1c8, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &243664905
 GameObject:
   m_ObjectHideFlags: 0
@@ -547,7 +489,6 @@ Transform:
   - {fileID: 243664906}
   - {fileID: 1778615629}
   - {fileID: 1989157177}
-  - {fileID: 1753626575}
   m_Father: {fileID: 0}
   m_RootOrder: 1
 --- !u!1 &1337955700
@@ -838,10 +779,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 472884026}
   m_RootOrder: 0
---- !u!4 &1753626575 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 400248, guid: 9770bf7076aab4bbdab9487711a0b1c8, type: 2}
-  m_PrefabInternal: {fileID: 117638290}
 --- !u!1 &1778615628
 GameObject:
   m_ObjectHideFlags: 0
@@ -958,8 +895,6 @@ GameObject:
   - 65: {fileID: 1989157183}
   - 23: {fileID: 1989157182}
   - 54: {fileID: 1989157181}
-  - 114: {fileID: 1989157180}
-  - 114: {fileID: 1989157179}
   - 114: {fileID: 1989157178}
   m_Layer: 29
   m_Name: GridAgent
@@ -991,36 +926,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b502e3e81027c46f5828eaf835a7bc8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1989157179
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1989157176}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3049de55386c044488d198a13741efc2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSpeed: 5
+  movementSpeed: 4
   floorMask: 0
   movementVector: {x: 0, y: 0, z: 0}
   normalizedMovementVector: {x: 0, y: 0, z: 0}
   rigidBody: {fileID: 0}
---- !u!114 &1989157180
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1989157176}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e734308547284cf6bc29300b8bdf196, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetPosition: {x: 0, y: 0, z: 0}
-  targetMagnitudeDelta: 0
-  snappingDelta: .100000001
 --- !u!54 &1989157181
 Rigidbody:
   m_ObjectHideFlags: 0
