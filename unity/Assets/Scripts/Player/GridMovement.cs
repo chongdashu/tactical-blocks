@@ -8,7 +8,7 @@ public class GridMovement : BaseMovement {
 
 	public GameObject tileInDirection;
 	public GameObject targetTile;
-	public float tileSnapSensitivity = 0.785f;
+	public float tileSnapSensitivity = 0.755f;
 
 	// Use this for initialization
 	override protected void Awake () 
@@ -29,7 +29,7 @@ public class GridMovement : BaseMovement {
 			if (tileInDirection != null)
 			{
 				// There is something in front, continue to move to it.
-				movementVector.Set (h, 0f, -v);
+				movementVector.Set (h, 0f, v);
 				normalizedMovementVector = movementVector.normalized * movementSpeed * Time.deltaTime;
 				rigidBody.MovePosition(transform.position + normalizedMovementVector);
 
@@ -86,7 +86,7 @@ public class GridMovement : BaseMovement {
 		if (tileBelow != null)
 		{
 			// We are on the ground...
-			tempVector3.Set (h, 0f, -v);
+			tempVector3.Set (h, 0f, v);
 			Ray ray = new Ray(tileBelow.transform.position, tempVector3);
 			Debug.DrawRay(tileBelow.transform.position, tempVector3, Color.magenta);
 			RaycastHit hit;
