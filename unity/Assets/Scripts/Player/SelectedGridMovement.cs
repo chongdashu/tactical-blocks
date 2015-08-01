@@ -5,7 +5,7 @@ public class SelectedGridMovement : MonoBehaviour {
 
 	LevelConstructor levelConstructor;
 	TileSelector tileSelector;
-	Rigidbody movableRigidBody;
+//	Rigidbody movableRigidBody;
 	float speed = 5.0f;
 
 	public System.Action onMovementComplete;
@@ -17,7 +17,7 @@ public class SelectedGridMovement : MonoBehaviour {
 	void Awake () 
 	{
 		this.targetPosition = this.transform.position;
-		this.movableRigidBody = this.GetComponent<Rigidbody>();
+//		this.movableRigidBody = this.GetComponent<Rigidbody>();
 	}
 
 	// Use this for initialization
@@ -54,7 +54,7 @@ public class SelectedGridMovement : MonoBehaviour {
 		Debug.Log ("[MovableObjet] OnTileSelected()");
 		LevelTile levelTile = tileObject.GetComponent<LevelTile>();
 
-		string tileName = tileObject.name.Replace("Tile_","");
+//		string tileName = tileObject.name.Replace("Tile_","");
 //		int x = int.Parse(tileName.Split ('_')[0]);
 //		int z = int.Parse(tileName.Split ('_')[1]);
 		int x = levelTile.x;

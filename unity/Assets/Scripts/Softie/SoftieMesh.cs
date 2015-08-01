@@ -168,7 +168,7 @@ public class SoftieMesh : MonoBehaviour {
 
 		Debug.Log ("bearings.Length=" + bearings.Length);
 
-		float distanceBetweenBearings = (cubeSoftie.cubeLength/ (cubeSoftie.bearingsPerAxis-1))/2;
+//		float distanceBetweenBearings = (cubeSoftie.cubeLength/ (cubeSoftie.bearingsPerAxis-1))/2;
 //		float l = cubeSoftie.bearingsPerAxis;
 		int l = height;
 		for (int i=0; i < numberOfSubplanes; i++)
@@ -253,7 +253,7 @@ public class SoftieMesh : MonoBehaviour {
 			float ddy = i % numberOfYSubplanes;
 
 			float ddx1 = (i+numberOfYSubplanes) / numberOfYSubplanes;
-			float ddy1 = ddy + 1f/numberOfYSubplanes;
+//			float ddy1 = ddy + 1f/numberOfYSubplanes;
 //			float ddx1 = ddx + (1f/numberOfXSubplanes);
 //			float ddy1 = ddy +  (1f/numberOfYSubplanes);
 
@@ -261,7 +261,7 @@ public class SoftieMesh : MonoBehaviour {
 			Debug.Log ("ddy=" + ddy);
 
 			Debug.Log ("ddx1=" + ddx1);
-			Debug.Log ("ddy1=" + ddy1);
+//			Debug.Log ("ddy1=" + ddy1);
 
 			float dx = ddx/numberOfXSubplanes;
 			float dy = ddy/numberOfYSubplanes;

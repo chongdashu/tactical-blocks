@@ -10,10 +10,7 @@ public class GridMovement : BaseMovement {
 		Debug.Log ("[<color=orange>GridMovement</color>], OnAwake()");
 	}
 
-	void OnAwake()
-	{
 
-	}
 	
 	// Update is called once per frame
 	void Update () {
