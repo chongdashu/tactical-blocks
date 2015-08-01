@@ -927,7 +927,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b502e3e81027c46f5828eaf835a7bc8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 4
+  movementSpeed: 5
   floorMask: 0
   movementVector: {x: 0, y: 0, z: 0}
   normalizedMovementVector: {x: 0, y: 0, z: 0}
@@ -938,6 +938,7 @@ MonoBehaviour:
   tempVector3: {x: 0, y: 0, z: 0}
   tempObj: {fileID: 0}
   tileInDirection: {fileID: 0}
+  targetTile: {fileID: 0}
 --- !u!54 &1989157181
 Rigidbody:
   m_ObjectHideFlags: 0

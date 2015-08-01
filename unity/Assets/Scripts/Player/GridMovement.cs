@@ -7,6 +7,7 @@ public class GridMovement : BaseMovement {
 	public GameObject tempObj = null;
 
 	public GameObject tileInDirection;
+	public GameObject targetTile;
 
 	// Use this for initialization
 	override protected void Awake () 
@@ -21,27 +22,57 @@ public class GridMovement : BaseMovement {
 	override protected void DoMove(float h, float v)
 	{
 
-		if (v != 0)
+		if (v != 0 || h != 0)
 		{
-			Debug.Log ("[<color=orange>GridMovement</color>], DoMove()");
 			tileInDirection = GetTileInDirection(h, v);
 			if (tileInDirection != null)
 			{
+				// There is something in front, continue to move to it.
 				movementVector.Set (h, 0f, -v);
 				normalizedMovementVector = movementVector.normalized * movementSpeed * Time.deltaTime;
 				rigidBody.MovePosition(transform.position + normalizedMovementVector);
 
+				targetTile = tileInDirection;
+
 				tempVector3 = Vector3.Lerp (transform.position, tileInDirection.transform.position, movementSpeed*Time.deltaTime);
 				rigidBody.MovePosition(tempVector3);
+			}
+			else
+			{	
+				// Nothing else in front.
+				if (targetTile != null)
+				{
+					if (Mathf.Approximately((targetTile.transform.position - transform.position).magnitude, 0.05f)) 
+					{
+						// we're almost at our target destination, stop.
+						rigidBody.MovePosition(targetTile.transform.position);
+						targetTile = null;
+					}
+					else
+					{
+						tempVector3 = Vector3.Lerp (transform.position, targetTile.transform.position, movementSpeed*Time.deltaTime);
+						rigidBody.MovePosition(tempVector3);
+					}
+				}
 			}
 		}
 
 		if (h == 0 && v == 0)
 		{
-			if (tileInDirection != null)
+			if (targetTile != null)
 			{
-				tempVector3 = Vector3.Lerp (transform.position, tileInDirection.transform.position, movementSpeed*Time.deltaTime);
-				rigidBody.MovePosition(tempVector3);
+				if (Mathf.Approximately((targetTile.transform.position - transform.position).magnitude, 0.05f)) 
+				{
+					// we're almost at our target destination, stop.
+					rigidBody.MovePosition(targetTile.transform.position);
+					targetTile = null;
+				}
+				else
+				{
+					tempVector3 = Vector3.Lerp (transform.position, targetTile.transform.position, movementSpeed*Time.deltaTime);
+					rigidBody.MovePosition(tempVector3);
+				}
+
 			}
 		}
 	}
