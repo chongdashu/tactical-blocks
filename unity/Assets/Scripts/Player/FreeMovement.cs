@@ -8,6 +8,7 @@ public class FreeMovement : MonoBehaviour {
 	public Vector3 movementVector;
 	public Vector3 normalizedMovementVector;
 	public Rigidbody rigidBody;
+	public GameObject tileBelow;
 	
 	// Use this for initialization
 	void Awake () 
@@ -23,7 +24,7 @@ public class FreeMovement : MonoBehaviour {
 	{
 		float h = Input.GetAxisRaw("Horizontal"); 	// values {-1, 0, +1}
 		float v = Input.GetAxisRaw("Vertical");		// values {-1, 0, +1}
-
+	
 		DoMove(h, v);
 	}
 
