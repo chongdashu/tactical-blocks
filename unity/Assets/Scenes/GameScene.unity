@@ -132,10 +132,13 @@ MonoBehaviour:
   - {fileID: 145754, guid: ff6f8fddae77b4bddbc27d4df83c09c8, type: 2}
   - {fileID: 113830, guid: aa4cb1d6d58c241d88603b0ce9e9cf87, type: 2}
   - {fileID: 157354, guid: cfe0885219d894aa6a89a44e3b7c9c7b, type: 2}
+  - {fileID: 117788, guid: 8a4a4e7af8edf446385749abe019dd0e, type: 2}
+  - {fileID: 124850, guid: d8c164ea943e44b4db4a75745ce60d00, type: 2}
+  - {fileID: 124850, guid: d8c164ea943e44b4db4a75745ce60d00, type: 2}
   prefabHeights: []
   groundContainer: {fileID: 0}
   levelTileWidth: 7
-  levelTileLength: 5
+  levelTileLength: 7
   groundY: 0
   defaultMap: 12121212121212121212121212211212112
   map: []
@@ -507,7 +510,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1337955701
 Transform:
   m_ObjectHideFlags: 0
@@ -911,7 +914,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1989157176}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -4}
+  m_LocalPosition: {x: 3, y: 2.5, z: -6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1312244926}

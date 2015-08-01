@@ -36,6 +36,7 @@ public class GridMovement : BaseMovement {
 				targetTile = tileInDirection;
 
 				tempVector3 = Vector3.Lerp (transform.position, tileInDirection.transform.position, movementSpeed*Time.deltaTime);
+				tempVector3.y = transform.position.y;
 				rigidBody.MovePosition(tempVector3);
 			}
 			else
@@ -54,6 +55,7 @@ public class GridMovement : BaseMovement {
 					{
 						tempVector3 = (targetTile.transform.position - transform.position);
 						tempVector3 = Vector3.Lerp (transform.position, targetTile.transform.position, (movementSpeed*Time.deltaTime)/tempVector3.magnitude);
+						tempVector3.y = transform.position.y;
 						rigidBody.MovePosition(tempVector3);
 					}
 				}
@@ -75,6 +77,7 @@ public class GridMovement : BaseMovement {
 				{
 					tempVector3 = (targetTile.transform.position - transform.position);
 					tempVector3 = Vector3.Lerp (transform.position, targetTile.transform.position, (movementSpeed*Time.deltaTime)/tempVector3.magnitude);
+					tempVector3.y = transform.position.y;
 					rigidBody.MovePosition(tempVector3);
 				}
 			}

@@ -30,9 +30,14 @@ public class CameraRotator : MonoBehaviour {
 
 		}
 		// Right
-		if((Input.GetKey(KeyCode.RightArrow)))
+//		if((Input.GetKey(KeyCode.RightArrow)))
+		if((Input.GetKeyDown(KeyCode.RightArrow)))
 		{
-			transform.Translate((Vector3.right * cameraVelocity) * Time.deltaTime);
+//			transform.Translate((Vector3.right * cameraVelocity) * Time.deltaTime);
+			targetRotation = +90f;
+			accumulatedRotation = 0f;
+			timeStart = Time.time;
+			timeEnd = timeStart + timeToRotate;
 		}
 		// Up
 		if((Input.GetKey(KeyCode.UpArrow)))

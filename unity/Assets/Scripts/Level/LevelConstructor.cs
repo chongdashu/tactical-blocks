@@ -10,7 +10,7 @@ public class LevelConstructor : MonoBehaviour {
 	public float[] prefabHeights;
 	public GameObject groundContainer;
 	public int levelTileWidth = 7;
-	public int levelTileLength = 5;
+	public int levelTileLength = 7;
 	public float groundY = 0f;
 	public string defaultMap = "";
 	public List<string> map = new List<string>();
@@ -30,20 +30,24 @@ public class LevelConstructor : MonoBehaviour {
 		}
 
 		defaultMap = 
-			"1212121" +
-			"2121212" +
-			"1212121" +
-			"2121212" +
-			"1212121";
+			"3333333" +
+			"4444444" +
+			"5555555" +
+			"5555555" +
+			"1222221" +
+			"4222224" +
+			"3666663";
 
 		map.Add(defaultMap);
-//		map.Add (
-//			"0000000" +
-//		    "0000000" +
-//		    "0000000" +
-//		    "3434343" +
-//			"4343434" 
-//		);
+		map.Add (
+			"0000000" +
+			"2222222" +
+			"0007000" +
+			"0007000" +
+			"0007000" +
+			"0007000" +
+			"4777774"
+		);
 
 
 		groundContainer = GameObject.Find("_Ground");
