@@ -25,7 +25,19 @@ public class FreeMovement : MonoBehaviour {
 		float h = Input.GetAxisRaw("Horizontal"); 	// values {-1, 0, +1}
 		float v = Input.GetAxisRaw("Vertical");		// values {-1, 0, +1}
 	
+
 		DoMove(h, v);
+		DoRotate();
+	}
+
+	void DoRotate()
+	{
+		if (movementVector.magnitude > 0)
+		{
+			Quaternion rot = Quaternion.LookRotation(movementVector);
+			this.rigidBody.MoveRotation(rot);
+
+		}
 	}
 
 	void DoMove(float h, float v)

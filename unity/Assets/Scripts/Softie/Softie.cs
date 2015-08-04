@@ -23,6 +23,7 @@ public class Softie : MonoBehaviour {
 			axisContainer.name = "AxisContainer_" + a;
 			axisContainers[a] = axisContainer;
 
+
 			for (float i=0; i < bearingsPerAxis; i++)
 			{
 				float angle = 2 * Mathf.PI * (i/bearingsPerAxis);
