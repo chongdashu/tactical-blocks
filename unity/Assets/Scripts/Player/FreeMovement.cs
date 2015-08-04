@@ -27,7 +27,7 @@ public class FreeMovement : MonoBehaviour {
 	
 
 		DoMove(h, v);
-//		DoRotate();
+		DoRotate();
 	}
 
 	void DoRotate()
