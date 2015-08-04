@@ -27,7 +27,7 @@ public class FreeMovement : MonoBehaviour {
 	
 
 		DoMove(h, v);
-		DoRotate();
+//		DoRotate();
 	}
 
 	void DoRotate()
@@ -48,17 +48,27 @@ public class FreeMovement : MonoBehaviour {
 		}
 		else
 		{
-			movementVector = Camera.main.transform.forward;
+			if (v != 0)
+			{
+				movementVector = v*Camera.main.transform.forward;
+				movementVector.y = 0;
+			}
+			if (h != 0)
+			{
+				movementVector += Quaternion.AngleAxis(90*h, Vector3.up) * Camera.main.transform.forward;
+				movementVector.y = 0;
+			}
+
 		}
 
 		if (v != 0)
 		{
-			movementVector.Set(movementVector.x*v, 0f, movementVector.z*v);
+//			movementVector.Set(movementVector.x*v, 0f, movementVector.z*v);
 		}
 		if (h != 0)
 		{
-			movementVector += Quaternion.AngleAxis(90*h, Vector3.up) * Camera.main.transform.forward;
-			movementVector.y = 0f;
+//			movementVector += Quaternion.AngleAxis(90*h, Vector3.up) * Camera.main.transform.forward;
+//			movementVector.y = 0f;
 		}
 		normalizedMovementVector = movementVector.normalized * movementSpeed * Time.deltaTime;
 		rigidBody.MovePosition(transform.position + normalizedMovementVector);
