@@ -27,6 +27,7 @@ public class LookAtTarget : MonoBehaviour {
 		{
 			this.targetPosition = this.target.position;
 		}
+
 		if (this.targetPosition != null)
 		{
 			Vector3 dir = this.targetPosition - this.transform.position;
